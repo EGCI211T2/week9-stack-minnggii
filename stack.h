@@ -12,35 +12,50 @@ public:
     ~Stack();
 };
 
+Stack::Stack(){
+    //initialize stack
+    top = NULL;
+    size = 0;
+}
 
 void Stack::push(int x){
   NodePtr new_node=new NODE(x);
   if(new_node){
-            // Left missing for exercises…
-   }
- 
+    new_node -> set_next(top);
+    top = new_node;
+    size++;
+  }
          // Left missing for exercises…
     
 }
 
 int Stack::pop(){
-        NodePtr t=top;
+    if(size > 0)
+    {
+        NodePtr t = top;
         int value;
-        value=t->get_value();
-    // Left missing part for exercises
-        delete t;
-        return value;
-	//be careful of the empty stack!!!
-    }
+        value = t -> get_value();
+        top = t -> get_next();
 
-Stack::Stack(){
-    //initialize stack
-    
+        delete t;
+        size--;
+        return value;
+    }
+    else
+    {
+        cout<<"Empty stack" <<endl;
+    }
+	//be careful of the empty stack!!!
 }
+
 Stack::~Stack(){
     //delete all remaning stack (i.e. pop all) 
+    while(size > 0)
+    {
+        pop();
+    }
+    cout<<"Cleared all nodes" <<endl;
     
 }
-
 
 #endif
