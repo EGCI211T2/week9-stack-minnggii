@@ -26,6 +26,12 @@ void Stack::push(int x){
     size++;
   }
          // Left missing for exercises…
+    else
+    {
+        top = new_node;
+        new_node -> set_next(NULL);
+        size++;
+    }
     
 }
 
@@ -44,6 +50,7 @@ int Stack::pop(){
     else
     {
         cout<<"Empty stack" <<endl;
+        return 1;
     }
 	//be careful of the empty stack!!!
 }
